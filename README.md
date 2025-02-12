@@ -105,7 +105,7 @@ Notre base de données a été méticuleusement filtrée et adaptée pour corres
 
 <div align="center">
 
-> *"De l'analyse de données à la création web : un projet qui transcende les frontières technologiques"*
+> *"De l'analyse de données à la création web
 
 </div>
 
@@ -125,9 +125,4 @@ Ce projet illustre parfaitement la synergie entre data science et développement
 
 </div>
 
-
-
-**Made with ❤️ pour la Creuse**
-
-</div>
 
