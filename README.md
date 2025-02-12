@@ -127,6 +127,7 @@ Ce projet illustre parfaitement la synergie entre data science et développement
 </div>
 
 
+
 **Made with ❤️ pour la Creuse**
 
 </div>
