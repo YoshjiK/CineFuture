@@ -1,75 +1,126 @@
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-2.0.1-green.svg)
-![TMDB](https://img.shields.io/badge/TMDB-API-yellow.svg)
+<div align="center">
 
-## 📖 À Propos
+![Logo CinéCreuse](https://img.shields.io/badge/Cin%C3%A9Creuse-2025-red.svg?style=for-the-badge&logo=film&logoColor=white)
 
-CinéCreuse est un moteur de recherche et de recommandation de films spécialement conçu pour les habitants de la Creuse (France). Le projet utilise l'intelligence artificielle pour suggérer des films en se basant sur une analyse approfondie des préférences cinématographiques locales.
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.0.1-green.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![TMDB](https://img.shields.io/badge/TMDB-API-yellow.svg?style=for-the-badge&logo=themoviedatabase&logoColor=white)](https://www.themoviedb.org/)
+[![Render](https://img.shields.io/badge/Render-Deploy-purple.svg?style=for-the-badge&logo=render&logoColor=white)](https://cinefuture.onrender.com)
 
-## 🎯 Caractéristiques
+---
 
-- 🔍 **Recherche Intelligente** : Trouvez rapidement des films par titre
-- 🎲 **Recommandations Personnalisées** : Suggestions basées sur les goûts des Creusois
-- 🎭 **Détails Complets** : Informations détaillées sur chaque film via l'API TMDB
-- 🇫🇷 **Interface en Français** : Application entièrement localisée
+### 🎥 Moteur de Recommandation de Films pour la Creuse 🎥
 
-## 🛠️ Technologies Utilisées
+*Un projet d'intelligence artificielle au service du cinéma local*
 
-- **Backend** : Python, Flask
-- **Data Science** : Pandas, Scikit-learn
-- **Base de Données** : Parquet
-- **API** : TMDB (The Movie Database)
+[Voir le Site](https://cinefuture.onrender.com) • [Signaler un Bug](../../issues) • [Demander une Fonctionnalité](../../issues)
 
-## ⚙️ Installation
+</div>
 
-1. Clonez le repository :
-```bash
-git clone [URL_DU_REPO]
-```
+---
 
-2. Installez les dépendances :
-```bash
-pip install -r requirements.txt
-```
+## 🌟 Points Forts
 
-3. Lancez l'application :
-```bash
-python app.py
-```
+<table>
+<tr>
+<td width="50%">
 
-## 📚 Structure du Projet
+### 🎯 Fonctionnalités Clés
+- ✨ **Recherche IA** avancée
+- 🎲 **Recommandations** localisées
+- 🎭 **Profils détaillés** des films
+- 🇫🇷 **100% en français**
 
-```
-PROJET 2/
-├── app.py              # Application principale Flask
-├── recommander.py      # Logique de recommandation
-├── requirements.txt    # Dépendances Python
-├── static/            # Fichiers statiques (CSS, JS)
-├── templates/         # Templates HTML
-└── final_V8.parquet   # Base de données des films
-```
+</td>
+<td width="50%">
 
-## 🔧 Configuration
+### 💫 Avantages
+- 🎯 **Adapté à la Creuse**
+- 🚀 **Performance optimale**
+- 🤝 **Interface intuitive**
+- 📱 **Responsive Design**
 
-1. Créez un compte sur [TMDB](https://www.themoviedb.org/)
-2. Obtenez une clé API
-3. Configurez la clé dans `app.py`
+</td>
+</tr>
+</table>
+
+## 🌐 Site en Direct
+
+<div align="center">
+
+[![Visiter CinéFuture](https://img.shields.io/badge/CinéFuture-Visiter%20le%20Site-blue?style=for-the-badge&logo=firefox&logoColor=white)](https://cinefuture.onrender.com)
+
+</div>
+
+## ⚡ Technologies
+
+<table>
+<tr>
+<td width="33%">
+
+### Frontend
+- 🎨 HTML5 & CSS3
+- 💫 JavaScript moderne
+- 🎭 Templates Flask
+
+</td>
+<td width="33%">
+
+### Backend
+- ⚡ Python 3.9+
+- 🛠️ Flask Framework
+- 🎬 TMDB API
+
+</td>
+<td width="33%">
+
+### Data Science
+- 📊 Pandas
+- 🧠 Scikit-learn
+- 📦 Parquet DB
+
+</td>
+</tr>
+</table>
 
 ## 📊 Base de Données
 
-La base de données a été spécialement filtrée et optimisée pour correspondre aux préférences cinématographiques des habitants de la Creuse, basée sur une étude des habitudes locales.
+> 🎯 **Spécialement optimisée pour la Creuse**
+
+Notre base de données a été méticuleusement filtrée et adaptée pour correspondre aux préférences cinématographiques des Creusois, basée sur une étude approfondie des habitudes locales.
+
+## 🔧 Configuration Technique
+
+```yaml
+# Structure du Projet
+├── 📁 app.py            # Application Flask
+├── 📁 recommander.py    # Moteur de recommandation
+├── 📁 static/          # Assets
+├── 📁 templates/       # Vues HTML
+└── 📊 final_V8.parquet # Base de données
+```
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! N'hésitez pas à :
-- 🐛 Signaler des bugs
-- 💡 Proposer des nouvelles fonctionnalités
-- 📝 Améliorer la documentation
+<div align="center">
+
+[![Contribuer](https://img.shields.io/badge/Contribuer-Guide-orange?style=for-the-badge&logo=github&logoColor=white)](../../contributing)
+[![Issues](https://img.shields.io/badge/Issues-Signaler-red?style=for-the-badge&logo=github&logoColor=white)](../../issues)
+
+</div>
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
+<div align="center">
 
-## 👥 Contact
+[![Licence MIT](https://img.shields.io/badge/Licence-MIT-blue.svg?style=for-the-badge&logo=license&logoColor=white)](./LICENSE)
 
-Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub.
+</div>
+
+---
+
+<div align="center">
+
+**Made with ❤️ pour la Creuse**
+
+</div>
