@@ -4,3 +4,4 @@ requests==2.26.0
 python-dotenv==0.19.0
 gunicorn==20.1.0
 pandas
+joblib
