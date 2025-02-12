@@ -1,8 +1,7 @@
-# 🎬 CinéCreuse
+# 🎬 CinéFuture
 
 <div align="center">
 
-![Logo CinéCreuse](https://img.shields.io/badge/Cin%C3%A9Creuse-2025-red.svg?style=for-the-badge&logo=film&logoColor=white)
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-2.0.1-green.svg?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
