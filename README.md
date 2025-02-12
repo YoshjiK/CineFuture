@@ -1,3 +1,5 @@
+# 🎬 CinéCreuse
+
 <div align="center">
 
 ![Logo CinéCreuse](https://img.shields.io/badge/Cin%C3%A9Creuse-2025-red.svg?style=for-the-badge&logo=film&logoColor=white)
@@ -100,24 +102,29 @@ Notre base de données a été méticuleusement filtrée et adaptée pour corres
 └── 📊 final_V8.parquet # Base de données
 ```
 
-## 🤝 Contribution
+## 👨‍💻 À Propos de l'Auteur
 
 <div align="center">
 
-[![Contribuer](https://img.shields.io/badge/Contribuer-Guide-orange?style=for-the-badge&logo=github&logoColor=white)](../../contributing)
-[![Issues](https://img.shields.io/badge/Issues-Signaler-red?style=for-the-badge&logo=github&logoColor=white)](../../issues)
+> *"De l'analyse de données à la création web : un projet qui transcende les frontières technologiques"*
 
 </div>
 
-## 📄 Licence
+En tant qu'appprenti Data Analyst passionné par l'innovation, ce projet représente la convergence entre l'analyse de données et le développement web. Cette aventure m'a permis de :
 
-<div align="center">
+- 📊 **Expertise Data** : Mise en pratique de mes compétences en analyse de données et machine learning
+- 💻 **Expansion Web** : Acquisition de nouvelles compétences en développement web (Python Flask, HTML/CSS, JavaScript)
+- 🎯 **Vision Globale** : Création d'une solution complète, de l'analyse des données jusqu'au déploiement
 
-[![Licence MIT](https://img.shields.io/badge/Licence-MIT-blue.svg?style=for-the-badge&logo=license&logoColor=white)](./LICENSE)
-
-</div>
+Ce projet illustre parfaitement la synergie entre data science et développement web, démontrant qu'un Data Analyst peut créer des solutions end-to-end impactantes pour sa communauté.
 
 ---
+
+<div align="center">
+
+**Made with ❤️ pour la Creuse**
+
+</div>
 
 <div align="center">
 
