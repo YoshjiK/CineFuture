@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommandations - CineFuture</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommendations.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="{{ url_for('static', filename='montagne.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    {% include 'nav.html' %}
+
+    <div class="page-container">
+        <div class="content-wrapper">
+            <div class="selected-movie-section">
+                <h2>Film Sélectionné</h2>
+                {% if selected_movie.poster_path %}
+                <div class="movie-poster featured" data-movie-id="{{ selected_movie.id }}" data-title="{{ selected_movie.title }}">
+                    <img src="{{ selected_movie.poster_path }}" 
+                         alt="{{ selected_movie.title }}">
+                    <div class="movie-info">
+                        <h3>{{ selected_movie.title }}</h3>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="recommendations-section">
+                <h2>Films Recommandés</h2>
+                <div class="recommendations-grid">
+                    {% for movie in recommended_movies %}
+                    <div class="movie-card">
+                        {% if movie.poster_path %}
+                        <div class="movie-poster" 
+                             data-movie-title="{{ movie.title }}"
+                             data-movie-overview="{{ movie.overview }}"
+                             data-movie-poster="{{ movie.poster_path }}"
+                             data-movie-release="{{ movie.release_date }}"
+                             data-movie-rating="{{ movie.vote_average }}"
+                             data-movie-votes="{{ movie.vote_count }}"
+                             data-movie-genres="{{ movie.genres|join(', ') if movie.genres else '' }}">
+                            <img src="{{ movie.poster_path }}" 
+                                 alt="{{ movie.title }}"
+                                 loading="lazy">
+                            <div class="movie-info">
+                                <h3>{{ movie.title }}</h3>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img class="modal-poster" src="" alt="Movie Poster">
+                </div>
+                <div class="modal-right">
+                    <div class="modal-details">
+                        <div class="modal-rating">
+                            <span class="stars"></span>
+                            <span class="vote-count"></span>
+                        </div>
+                        <div class="modal-date"></div>
+                        <div class="modal-genres"></div>
+                    </div>
+                    <div class="modal-overview">
+                        <h3>Synopsis</h3>
+                        <p class="modal-description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/recommendations.js') }}"></script>
+</body>
+</html>

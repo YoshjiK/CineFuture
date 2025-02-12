@@ -1,0 +1,8262 @@
+.selected-movie-content .movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-modal.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.movie-modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    transform-origin: center;
+}
+
+.close-modal:hover {
+    color: #00ffff;
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-title {
+    color: #00ffff;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+.movie-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stars {
+    color: #00ffff;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.genre-tag {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #00ffff;
+}
+
+.overview {
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Section Casting */
+.cast-section {
+    margin: 20px 0;
+}
+
+.cast-section h3 {
+    color: #00ffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.actor-info {
+    background: rgba(0, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.actor-name {
+    color: #fff;
+    font-weight: bold;
+}
+
+.actor-character {
+    color: #aaa;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-metadata {
+        text-align: center;
+    }
+
+    .genres {
+        justify-content: center;
+    }
+
+    .rating {
+        justify-content: center;
+    }
+}
+
+/* Animation pour les éléments internes */
+.modal-poster img {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-out 0.2s;
+}
+
+.movie-modal.show .modal-poster img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.modal-info > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease-out;
+}
+
+.movie-modal.show .modal-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.movie-modal.show .movie-metadata {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.movie-modal.show .genres {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.movie-modal.show .cast-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.movie-modal.show .overview {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Animation des tags de genre */
+.genre-tag {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.genre-tag:hover {
+    transform: scale(1.05);
+}
+
+/* Animation des cartes d'acteurs */
+.actor-info {
+    transition: all 0.2s ease;
+}
+
+.actor-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Animation de fermeture */
+.movie-modal.closing {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.movie-modal.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* Page d'accueil */
+.home-page {
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+
+/* Conteneur vidéo */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.video-overlay {
+    display: none;
+}
+
+/* Logo et tagline */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-container h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+{{ ... }}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+/* Navigation */
+.nordic-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.nav-link {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 0.7rem 0;
+    position: relative;
+    transition: all 0.8s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                 0 0 20px rgba(255, 255, 255, 0.3),
+                 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Titre central */
+.main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.main-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 2rem auto;
+}
+
+.main-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+}
+
+.hero-title {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    animation: fadeIn 2s ease-out;
+}
+
+.title-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title h1 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 5rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-line {
+    width: 150px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scaleX(0);
+    animation: lineExpand 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-title p {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.search-page {
+    min-height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: fill;
+    z-index: -1;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transform-origin: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    animation: lineExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Autocomplétion et résultats */
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 0;
+    z-index: 1;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: searchAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#selectedMovie {
+    margin-top: 20px;
+    padding: 1.5rem;
+    background: transparent !important;
+    border: none;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: transparent !important;
+}
+
+.movie-poster {
+    width: 200px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.movie-info {
+    flex-grow: 1;
+    background: transparent !important;
+}
+
+.movie-title {
+    margin: 0 0 15px 0;
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.recommendations-button {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Style pour le film sélectionné */
+#selectedMovie {
+    margin-top: 20px;
+    display: none;
+}
+
+.selected-movie-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.movie-poster {
+    width: 100px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.recommendations-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.recommendations-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.movie-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;

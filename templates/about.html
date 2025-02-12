@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - CineFuture</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/transitions.css') }}">
+</head>
+<body class="about-page">
+    <div class="video-container">
+        <video autoplay muted loop playsinline preload="auto" id="bgVideo">
+            <source src="{{ url_for('static', filename='aurore.mp4') }}" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    {% include 'nav.html' %}
+
+    <div class="about-container">
+        <section class="project-section">
+            <h1>CineFuture</h1>
+            <div class="project-description">
+                <p>CineFuture est né de notre passion commune pour le cinéma et l'innovation technologique. Notre objectif est de révolutionner la façon dont les utilisateurs découvrent et explorent le monde du cinéma.</p>
+                <div class="key-features">
+                    <h2>Caractéristiques Principales</h2>
+                    <ul>
+                        <li>Recherche intuitive de films</li>
+                        <li>Système de recommandations intelligent</li>
+                        <li>Interface moderne et immersive</li>
+                        <li>Expérience utilisateur fluide et réactive</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Notre Équipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-content">
+                        <h3>Membre 1</h3>
+                        <p class="role">Développeur Frontend</p>
+                        <p class="contribution">Interface utilisateur & Design</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-content">
+                        <h3>Membre 2</h3>
+                        <p class="role">Développeur Backend</p>
+                        <p class="contribution">API & Base de données</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-content">
+                        <h3>Membre 3</h3>
+                        <p class="role">UI/UX Designer</p>
+                        <p class="contribution">Design & Expérience utilisateur</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-content">
+                        <h3>Membre 4</h3>
+                        <p class="role">Chef de Projet</p>
+                        <p class="contribution">Gestion & Coordination</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <h2>Technologies Utilisées</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>Flask</li>
+                        <li>TMDb API</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/transitions.js') }}"></script>
+</body>
+</html>

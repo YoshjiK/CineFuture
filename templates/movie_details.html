@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFuture - {{ movie.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/movie_details.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/transitions.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="{{ url_for('static', filename='aurore.mp4') }}" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    {% include 'nav.html' %}
+
+    <div class="movie-details-container">
+        <div class="movie-poster">
+            {% if movie.poster_path %}
+            <img src="{{ movie.poster_path }}" alt="{{ movie.title }}">
+            {% endif %}
+        </div>
+        
+        <div class="movie-info">
+            <div class="movie-header">
+                <h1>{{ movie.title }}</h1>
+                {% if movie.release_date %}
+                <div class="release-date">Sortie le {{ movie.release_date }}</div>
+                {% endif %}
+            </div>
+
+            {% if movie.vote_average %}
+            <div class="rating">
+                <div class="stars">
+                    {% set rating = (movie.vote_average / 2) | round(1) %}
+                    {% for i in range(rating | int) %}★{% endfor %}
+                    {% for i in range(5 - (rating | int)) %}☆{% endfor %}
+                </div>
+                {% if movie.vote_count %}
+                <div class="votes">({{ movie.vote_count }} votes)</div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if movie.genres %}
+            <div class="genres">
+                {% for genre in movie.genres %}
+                <span>{{ genre }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if movie.overview %}
+            <div class="overview">
+                <h2>Synopsis</h2>
+                <p>{{ movie.overview }}</p>
+            </div>
+            {% endif %}
+
+            {% if movie.trailer_url %}
+            <div class="trailer-container">
+                <h2>Bande-annonce</h2>
+                <div class="video-wrapper">
+                    <iframe 
+                        src="{{ movie.trailer_url }}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            {% endif %}
+
+            <a href="{{ url_for('recommendations', movie_title=movie.title) }}" class="recommendations-link">Voir les recommandations</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/transitions.js') }}"></script>
+</body>
+</html>

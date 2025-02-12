@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche - CineFuture</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="{{ url_for('static', filename='foret.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    {% include 'nav.html' %}
+
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Rechercher un film..." autocomplete="off">
+        </div>
+        <div id="suggestions"></div>
+        
+        <div id="selectedMovie" style="display: none;">
+            <div class="movie-poster">
+                <img src="" alt="Movie Poster">
+            </div>
+            <div class="movie-info">
+                <h2 class="movie-title"></h2>
+                <a href="#" class="recommendations-button">Voir les recommandations</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("Page chargée");
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM chargé");
+            const searchInput = document.getElementById('searchInput');
+            console.log("Input trouvé:", searchInput);
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    console.log("Saisie:", this.value);
+                });
+            }
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+</body>
+</html>

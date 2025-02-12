@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFuture</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/transitions.css') }}">
+</head>
+<body class="home-page">
+    <!-- Vidéo de fond -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline preload="auto" id="bgVideo">
+            <source src="{{ url_for('static', filename='edit.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Menu de navigation -->
+    <nav class="nordic-nav">
+        <a href="{{ url_for('home') }}" class="nav-link">ACCUEIL</a>
+        <a href="{{ url_for('search') }}" class="nav-link">RECHERCHE</a>
+        <a href="{{ url_for('recommendations') }}" class="nav-link">RECOMMANDATIONS</a>
+        <a href="#" class="nav-link">À PROPOS</a>
+    </nav>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/transitions.js') }}"></script>
+</body>
+</html>

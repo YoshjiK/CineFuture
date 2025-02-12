@@ -1,0 +1,193 @@
+.about-page {
+    min-height: 100vh;
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Projet */
+.project-section {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.project-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 4px;
+    background: linear-gradient(45deg, #fff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.project-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.key-features {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+
+.key-features h2 {
+    color: #00ffff;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.key-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.key-features li {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.key-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #00ffff;
+}
+
+/* Section Équipe */
+.team-section {
+    margin: 4rem 0;
+    animation: fadeInUp 0.8s ease-out 0.2s;
+}
+
+.team-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #00ffff;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.team-member {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+}
+
+.member-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.role {
+    color: #00ffff;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.contribution {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Section Technologies */
+.tech-section {
+    margin: 4rem 0;
+    animation: fadeInUp 0.8s ease-out 0.4s;
+}
+
+.tech-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #00ffff;
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.tech-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.tech-item h4 {
+    color: #00ffff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.tech-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-item li {
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        margin: 60px auto;
+        padding: 1.5rem;
+    }
+
+    .project-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-stack {
+        grid-template-columns: 1fr;
+    }
+}

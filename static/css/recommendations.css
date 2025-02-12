@@ -1,0 +1,312 @@
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Page Container */
+.page-container {
+    padding: 1rem;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Section film sélectionné */
+.selected-movie-section {
+    text-align: center;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 95%;
+    background: transparent;
+}
+
+.selected-movie-section h2 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.movie-poster.featured {
+    width: 200px;
+    margin: 0 auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie-poster.featured:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.movie-poster.featured img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.selected-movie-section .movie-info {
+    margin-top: 0.8rem;
+}
+
+.selected-movie-section h3 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 300;
+}
+
+/* Section films recommandés */
+.recommendations-section {
+    text-align: center;
+    padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 95%;
+    background: transparent;
+    width: 100%;
+    overflow: hidden;
+}
+
+.recommendations-section h2 {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.recommendations-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.recommendations-grid .movie-card {
+    flex: 0 0 200px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.recommendations-grid .movie-poster {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.recommendations-grid .movie-poster:hover {
+    transform: scale(1.15);
+    z-index: 2;
+}
+
+.recommendations-grid .movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.recommendations-grid .movie-poster:hover img {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.movie-poster {
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.movie-poster:hover {
+    z-index: 3;
+}
+
+/* Styles spécifiques pour les films recommandés */
+.recommended-movies .movie-poster {
+    width: 500px !important;
+    margin: 1rem;
+}
+
+.recommended-movies .movie-poster img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.movie-info {
+    display: none;
+    margin-top: 0.8rem;
+    background: transparent;
+}
+
+.movie-info h3 {
+    display: none;
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Modal de base */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+.modal-body {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.modal-poster {
+    flex: 0 0 300px;
+}
+
+.modal-poster img {
+    width: 100%;
+    height: auto;
+}
+
+.modal-info {
+    flex: 1;
+}
+
+.modal-title {
+    color: white;
+    margin: 0;
+    padding-right: 30px;
+}
+
+.overview h3 {
+    color: white;
+    margin-top: 0;
+}
+
+.overview-text {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-poster {
+        flex: none;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .recommendations-section {
+        padding: 1.5rem;
+    }
+
+    .recommendations-grid {
+        gap: 1.5rem;
+    }
+
+    .movie-poster {
+        height: auto;
+    }
+
+    .movie-info h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .recommendations-grid {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+        height: auto;
+    }
+
+    .content-wrapper::after {
+        display: none;
+    }
+
+    .selected-movie-section,
+    .recommendations-section {
+        width: 100%;
+        padding: 0;
+    }
+
+    .selected-movie-section img {
+        width: 180px;
+    }
+
+    .recommendations-grid {
+        padding: 0.5rem;
+    }
+}

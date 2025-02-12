@@ -1,0 +1,29 @@
+from flask import Flask, render_template, jsonify, request
+import pandas as pd
+
+app = Flask(__name__)
+
+# Chargement des données
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
+@app.route('/recommendations')
+def recommendations():
+    movie = request.args.get('movie', '')
+    # Ici, nous ajouterons la logique de recommandation
+    recommended_movies = []  # À remplacer par votre logique de recommandation
+    return render_template('recommendations.html', recommendations=recommended_movies)
+
+@app.route('/api/suggest')
+def suggest():
+    query = request.args.get('query', '').lower()
+    # À adapter selon la structure de votre base de données
+    return jsonify([])
+
+if __name__ == '__main__':
+    app.run(debug=True)
